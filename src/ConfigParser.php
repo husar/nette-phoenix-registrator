@@ -9,14 +9,14 @@ use Nette\DI\Container;
 
 final class ConfigParser
 {
-    private const ENVIRONMENT = 'local';
-
-    private Container $container;
+    public const ENVIRONMENT = 'local';
 
     /** @var string[] */
     private array $migrationDirs = [];
 
     private string $logTableName = 'phoenix_log';
+
+    private Container $container;
 
     public function __construct(Container $container)
     {
