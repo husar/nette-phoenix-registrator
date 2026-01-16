@@ -9,7 +9,7 @@ use Nette\DI\Container;
 
 final class ConfigParser
 {
-    public const ENVIRONMENT = 'local';
+    private const ENVIRONMENT = 'local';
 
     /** @var string[] */
     private array $migrationDirs = [];
@@ -44,6 +44,23 @@ final class ConfigParser
         return $this;
     }
 
+    /**
+     * @return array{
+     *   migration_dirs: array<int, string>,
+     *   default_environment: string,
+     *   log_table_name: string,
+     *   environments: array<string, array{
+     *     adapter: string,
+     *     host: string,
+     *     username: string,
+     *     password: mixed,
+     *     db_name: string,
+     *     charset: string,
+     *     collation: string|null,
+     *     port?: int
+     *   }>
+     * }
+     */
     public function createConfig(): array
     {
         $configData = [
